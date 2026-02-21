@@ -1,4 +1,4 @@
-# Reflection: Agile Workflows & Kanban
+# Agile Workflows & Kanban
 
 ## Research & Learning
 * **How a Kanban Board Works:** A Kanban board visually maps out the workflow. It allows the team to see the exact status of every task at a glance, ensuring transparency without the need for constant status meetings.
