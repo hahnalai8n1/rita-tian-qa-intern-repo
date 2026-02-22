@@ -37,3 +37,30 @@ Branches create an isolated, quiet sandbox for each new feature or test. Once th
 
 **What happens if two people edit the same file on different branches?**
 When those branches are eventually merged, Git will attempt to combine them. If the edits overlap on the exact same lines, a "merge conflict" occurs, requiring a human to manually review the written changes and decide which version to keep (as I practiced in the conflict resolution exercise).
+
+## Advanced Git Commands & When to Use Them
+
+**What does each command do?**
+* `git checkout main -- <file>`: Restores a single file to its state in the `main` branch, throwing away local uncommitted changes for just that file.
+* `git cherry-pick <commit>`: Grabs one specific commit from another branch and applies it to your current branch without merging the entire history.
+* `git log`: Displays the chronological history of commits.
+* `git blame <file>`: Annotates each line of a file, showing the exact commit and author who last modified it.
+
+**When would you use it in a real project?**
+As a QA, if I accidentally break a complex test script, I can use `checkout` to instantly reset just that script to the clean `main` version. If a developer fixes a blocker bug on a separate feature branch, I can `cherry-pick` just that fix into my testing branch to continue my work. `git blame` and `git log` are vital for async communication: instead of asking "who wrote this?" in a noisy channel, I can silently find the author and read their exact commit message for context.
+
+**What surprised you while testing these commands?**
+I was surprised by `git blame`. Despite its aggressive-sounding name, it is actually just a highly detailed, line-by-line historical map. It provides the clear, direct written context I need to understand why a specific line of code exists.
+
+## Debugging with `git bisect`
+
+**What does `git bisect` do?**
+It performs a binary search through your commit history to find the exact commit that introduced a bug. You tell Git a "bad" commit (where the bug exists) and a "good" commit (where it didn't), and Git automatically checks out commits in the middle for you to test until the culprit is isolated.
+
+[Image of a git bisect binary search process]
+
+**When would you use it in a real-world debugging situation?**
+If a feature was working flawlessly last Friday but is completely broken today, and there have been 50 commits merged over the weekend. Instead of guessing, I can use `git bisect` to mathematically pinpoint the exact code change that caused the failure.
+
+**How does it compare to manually reviewing commits?**
+Manual review is linear and exhausting (checking every single commit). `git bisect` reduces the time complexity to $O(\log N)$ compared to the $O(N)$ of linear review. It removes the guesswork and provides a clear, structured set of instructions (test this -> good/bad -> test next), which perfectly matches my preferred working style.
