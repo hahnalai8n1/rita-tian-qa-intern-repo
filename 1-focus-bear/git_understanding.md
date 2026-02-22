@@ -26,3 +26,14 @@ Git separates them to provide flexibility and precision. It allows me to make mu
 
 **When would you want to stage changes without committing?**
 When I am QA testing and adjusting multiple files (e.g., fixing a UI test script and an API test script simultaneously). I would want to stage and commit the UI changes first with a clear message, and then stage and commit the API changes separately. The staging area gives me the time and space to organize my work logically before making it permanent.
+
+## Branching & Team Collaboration
+
+**Why is pushing directly to main problematic?**
+The `main` branch represents the stable, production-ready version of the software. Pushing directly to `main` bypasses all QA checks and code reviews. If a bug is introduced, it immediately breaks the primary codebase for everyone.
+
+**How do branches help with reviewing code?**
+Branches create an isolated, quiet sandbox for each new feature or test. Once the work is done, it is submitted via a Pull Request (PR). This setup heavily supports asynchronous work—it provides a clear, documented space for the team to leave detailed written feedback and allows the author time to process and address those comments before the code ever touches `main`.
+
+**What happens if two people edit the same file on different branches?**
+When those branches are eventually merged, Git will attempt to combine them. If the edits overlap on the exact same lines, a "merge conflict" occurs, requiring a human to manually review the written changes and decide which version to keep (as I practiced in the conflict resolution exercise).
