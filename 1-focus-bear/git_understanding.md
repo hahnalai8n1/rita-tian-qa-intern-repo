@@ -64,3 +64,27 @@ If a feature was working flawlessly last Friday but is completely broken today, 
 
 **How does it compare to manually reviewing commits?**
 Manual review is linear and exhausting (checking every single commit). `git bisect` reduces the time complexity to $O(\log N)$ compared to the $O(N)$ of linear review. It removes the guesswork and provides a clear, structured set of instructions (test this -> good/bad -> test next), which perfectly matches my preferred working style.
+
+## Writing Meaningful Commit Messages
+
+**What makes a good commit message?**
+A good commit message is concise but highly descriptive. It uses the imperative mood (e.g., "Add test suite" instead of "Added tests") and, most importantly, explains the *why* behind the change, not just the *what*. 
+
+**How does a clear commit message help in team collaboration?**
+It acts as permanent, asynchronous documentation. If I need to test a feature, a clear commit message gives me direct, detailed instructions on what behavior was altered. It gives me the time to process the developer's intent before I even run the app.
+
+**How can poor commit messages cause issues later?**
+Vague messages like "fixed stuff" or "updates" are useless. They force QA and other developers to reverse-engineer the code to understand the goal, leading to misunderstandings, wasted time, and the need for synchronous clarification calls that could have been avoided.
+
+## Creating & Reviewing Pull Requests (PRs)
+
+**Why are PRs important in a team workflow?**
+PRs are the ultimate asynchronous collaboration tool. They provide a dedicated, quiet space to review code, run QA tests, and leave detailed written feedback before anything touches the main codebase. 
+
+
+
+**What makes a well-structured PR?**
+A great PR has a clear title, links to the relevant Kanban issues, and includes detailed "Steps to Test." For a QA Intern, having explicit written testing instructions directly in the PR description is the gold standard for efficiency.
+
+**What did you learn from reviewing an open-source PR?**
+I reviewed a React PR and noticed how structured and polite the communication is. Feedback is given line-by-line, focusing directly on the code rather than the person. The entire process allows contributors to process feedback on their own time, avoiding the pressure of immediate verbal confrontation.
