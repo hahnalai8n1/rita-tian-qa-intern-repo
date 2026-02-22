@@ -14,3 +14,15 @@ A merge conflict happens when Git is unable to automatically merge branches. In 
 
 **What did you learn?**
 I learned that merge conflicts are completely normal and not "errors" to panic over. They are simply Git's way of asking for a human decision. Because I value clear, detailed written instructions, I see now how important it is for teams to communicate asynchronously about which files they are modifying. Pulling from `main` frequently before starting new QA tasks will help me minimize these conflicts in the future.
+
+## Git Concepts: Staging vs. Committing
+
+**What is the difference between staging and committing?**
+* **Staging (`git add`):** This is the drafting phase. It’s like putting items into a shipping box. You are telling Git, "I want to include these specific changes in the next update," but you haven't finalized it yet.
+* **Committing (`git commit`):** This is the finalization phase. It’s like sealing the box and attaching a descriptive shipping label. The changes are now permanently recorded in the repository's history.
+
+**Why does Git separate these two steps?**
+Git separates them to provide flexibility and precision. It allows me to make multiple scattered changes across my workspace, but selectively group only the related changes together into a single, highly focused commit.
+
+**When would you want to stage changes without committing?**
+When I am QA testing and adjusting multiple files (e.g., fixing a UI test script and an API test script simultaneously). I would want to stage and commit the UI changes first with a clear message, and then stage and commit the API changes separately. The staging area gives me the time and space to organize my work logically before making it permanent.
